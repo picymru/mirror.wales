@@ -49,8 +49,17 @@ async function handleRequest(request) {
   }
 
   config = JSON.parse(config)
-  let endpoint = config[product]['endpoint']
-
+  try {
+    let endpoint = config[product]['endpoint']
+  }
+  catch (e) {
+    return new Response(`You tried to access a mirror we don't yet maintain. Please send your request to feedback@mirror.wales`, {
+      headers: {
+        'Content-Type': 'text/plain'
+      }
+    })
+  }
+  
   return new Response(endpoint, {
     headers: {
       'Content-Type': 'text/plain'
