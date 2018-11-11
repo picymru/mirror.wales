@@ -60,9 +60,18 @@ async function handleRequest(request) {
     })
   }
 
-  return new Response(endpoint, {
-    headers: {
-      'Content-Type': 'text/plain'
+  // And now to perform the fetch
+  let lastSegment = path.substring(path.lastIndexOf('/'))
+  if (lastSegment.indexOf('.') === -1)
+    path += '/'
+
+  return fetch(`${endpoint}${path}`, {
+    cf: {
+      cacheTtlByStatus: {
+        "200-299": 86400,
+        404: 1,
+        "500-599": 0
+      }
     }
   })
 }
