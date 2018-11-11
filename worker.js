@@ -18,7 +18,7 @@ async function handleRequest(request) {
   let path = new URL(request.url).pathname;
 
   // Now we do some syntax checking to ensure the host is valid
-  if (host.includes(`.${PRODUCT_NAME}`) == false) {
+  if (host.includes(PRODUCT_NAME) == false) {
     return new Response(`You requested an invalid host. Please visit our website at ${PRODUCT_NAME}`, {
       headers: {
         'Content-Type': 'text/plain'
@@ -26,9 +26,30 @@ async function handleRequest(request) {
     })
   }
 
-  // Now we fetch the subdomain from the host
+  // Now, for the main website
+  if (host == PRODUCT_NAME) {
+    return new Response(`Welcome to mirror.wales`, {
+      headers: {
+        'Content-Type': 'text/plain'
+      }
+    })
+  }
+
+  // Now we fetch the subdomain from the host, if it's a subdomain
   let product = host.replace(`.${PRODUCT_NAME}`, '')
-  return new Response(product, {
+
+  // And load the configuration so we can find out how to handle the request
+  let config = await mirrors.get('mirrors')
+  if (config === null) {
+    return new Response(`We are unable to handle your request at present due to a configuration issue. Please try again later`, {
+      headers: {
+        'Content-Type': 'text/plain'
+      }
+    })
+  }
+
+  config = JSON.parse(config)
+  return new Response(config[product], {
     headers: {
       'Content-Type': 'text/plain'
     }
