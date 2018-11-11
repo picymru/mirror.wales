@@ -49,7 +49,9 @@ async function handleRequest(request) {
   }
 
   config = JSON.parse(config)
-  return new Response(config[product], {
+  let endpoint = config[product]['endpoint']
+
+  return new Response(endpoint, {
     headers: {
       'Content-Type': 'text/plain'
     }
