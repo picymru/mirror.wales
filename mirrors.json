@@ -1,6 +1,14 @@
 {
+	"debian": {
+		"endpoint": "http://deb.debian.org",
+		"user-agent": "mirrors.wales/mirrorbot (debian)"
+	},
     "piwheels": {
-        "endpoint": "https://www.piwheels.org",
+        "endpoint": "http://www.piwheels.org",
         "user-agent": "mirrors.wales/mirrorbot (piwheels)"
+    },
+    "ubuntu": {
+        "endpoint": "http://ubuntu.positive-internet.com/ubuntu",
+        "user-agent": "mirrors.wales/mirrorbot (ubuntu)"
     }
 }
