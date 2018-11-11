@@ -66,6 +66,9 @@ async function handleRequest(request) {
     path += '/'
 
   return fetch(`${endpoint}${path}`, {
+    headers: {
+      'User-Agent': config[product]['user-agent']
+    },
     cf: {
       cacheTtlByStatus: {
         "200-299": 86400,
