@@ -4,7 +4,7 @@
 		"user-agent": "mirrors.wales/mirrorbot (debian)"
 	},
     "piwheels": {
-        "endpoint": "http://www.piwheels.org",
+        "endpoint": "https://mirrors.hostedin.wales/piwheels",
         "user-agent": "mirrors.wales/mirrorbot (piwheels)"
     },
     "ubuntu": {
