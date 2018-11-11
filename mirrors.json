@@ -8,7 +8,7 @@
         "user-agent": "mirrors.wales/mirrorbot (piwheels)"
     },
     "ubuntu": {
-        "endpoint": "http://ubuntu.positive-internet.com/ubuntu",
+        "endpoint": "http://archive.ubuntu.com/ubuntu",
         "user-agent": "mirrors.wales/mirrorbot (ubuntu)"
     }
 }
