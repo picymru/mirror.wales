@@ -1,0 +1,6 @@
+{
+    "piwheels": {
+        "endpoint": "https://piwheels.com",
+        "user-agent": "mirrors.wales/mirrorbot (piwheels)"
+    }
+}
